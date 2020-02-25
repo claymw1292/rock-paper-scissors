@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<script>
+
+    function playRound(p1Choice, cpuChoice) {
+    
+    switch (cpuChoice) {
+    case 0:
+        return cpuChoice = 'Rock';
+        break;
+    case 1: 
+        return cpuChoice = 'Paper';
+        break;
+    case 2:
+        return cpuChoice = 'Scissors';
+        break;
+    }
+    
+    switch (p1Choice) {
+    case "rock":
+        return p1Choice = 'Rock'
+        break;
+    case "paper":
+        return p1Choice = 'Paper'
+        break;
+    case "scissors":
+        return p1Choice = 'Scissors'
+        break;
+    }
+
+    if (p1Choice == cpuChoice) {
+    
+        return 'Draw! Both players chose ' + p1Choice
+    }
+    else if ((playerChoice.includes('ock') && cpuChoice.includes('ors')) ||
+           (playerChoice.includes('ors') && cpuChoice.includes('per')) ||
+           (playerChoice.includes('per') && cpuChoice.includes('ock'))) {
+            
+        return 'Player wins!'
+        }
+    else {
+        return 'CPU Wins'
+    }
+    }
+    
+    cpuChoice = Math.floor(Math.random()*Math.floor(3));
+    p1Choice = prompt('Which do you choose? Rock, Paper, or Scissors?');
+    
+    console.log(playRound(p1Choice, cpuChoice))
+
+</script>
+</body>
+</html>
