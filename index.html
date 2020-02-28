@@ -8,25 +8,36 @@
 
 let p1Choice = prompt('Name your weapon!');
 
+function convertCase() {
+
+p1Choice = p1Choice.slice(0, 1).toUpperCase() + p1Choice.slice(1).toLowerCase();
+
+}
+convertCase();
+
 let cpuPlay = ['Rock', 'Paper', 'Scissors'];
 let cpuChoice = cpuPlay[Math.floor(Math.random() * cpuPlay.length)];
+
 
 console.log(p1Choice, 'vs',cpuChoice);
 
 function playRound(p1Choice, cpuChoice) {
-
+    
 if (p1Choice === cpuChoice) {
-    return 'Draw!';
+    return 'Ahhh... Great Minds Think Alike';
 }
 else if ((p1Choice.includes('ock') && cpuChoice.includes('ors')) ||
            (p1Choice.includes('ors') && cpuChoice.includes('per')) ||
            (p1Choice.includes('per') && cpuChoice.includes('ock'))) {
-               return 'You Win!';
+               return 'You Chose... Wisely!';
 }
 else {
-    return 'You Lose, Loser!';
+    return 'You Chose... Poorly';
 }
 }
+
+
+
 console.log(playRound(p1Choice, cpuChoice))
     
     
