@@ -6,41 +6,56 @@
 <body>
 <script>
 
-let p1Choice = prompt('Name your weapon!');
+let p1Score = 0;
+let cpuScore = 0;
 
-function convertCase() {
-
-p1Choice = p1Choice.slice(0, 1).toUpperCase() + p1Choice.slice(1).toLowerCase();
-
+// Player 1 choice selection and proper case
+function p1Selection() {
+let p1Play = prompt('Name your weapon!') || "Rock";
+let p1Choice = p1Play.slice(0, 1).toUpperCase() + p1Play.slice(1).toLowerCase();
+return p1Choice;
 }
-convertCase();
+let p1Choice = p1Selection();
 
+// CPU random choice selection
+function cpuSelection() {
 let cpuPlay = ['Rock', 'Paper', 'Scissors'];
 let cpuChoice = cpuPlay[Math.floor(Math.random() * cpuPlay.length)];
+return cpuChoice;
+}
+let cpuChoice = cpuSelection();
+
+// Logic for 1 round - draw, win, loss - alert and add 1 to score
+function playRound(p1Choice, cpuChoice) {
+
+
+if (p1Choice === cpuChoice) {
+    alert("Ahhh... Great Minds Think Alike");
+}
+else if ((p1Choice.includes('ock') && cpuChoice.includes('ors')) ||
+        (p1Choice.includes('ors') && cpuChoice.includes('per')) ||
+        (p1Choice.includes('per') && cpuChoice.includes('ock'))) {
+            alert("You Chose... Wisely!");
+            return p1Score++;
+}
+else {
+    alert("You Chose... Poorly");
+    return cpuScore++;
+}
+}
 
 
 console.log(p1Choice, 'vs',cpuChoice);
 
-function playRound(p1Choice, cpuChoice) {
-    
-if (p1Choice === cpuChoice) {
-    return 'Ahhh... Great Minds Think Alike';
-}
-else if ((p1Choice.includes('ock') && cpuChoice.includes('ors')) ||
-           (p1Choice.includes('ors') && cpuChoice.includes('per')) ||
-           (p1Choice.includes('per') && cpuChoice.includes('ock'))) {
-               return 'You Chose... Wisely!';
-}
-else {
-    return 'You Chose... Poorly';
-}
-}
+playRound(p1Choice, cpuChoice);
+
+console.log('You: ' + p1Score, 'CPU: ' + cpuScore)
+
+function game(p1Score, cpuScore) {
 
 
 
-console.log(playRound(p1Choice, cpuChoice))
-    
-    
+}
 
 </script>
 </body>
