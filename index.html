@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 </head>
 <body>
 <script>
 
-let p1Score = 0;
+let p1Score = 0; 
 let cpuScore = 0;
 
 // Player 1 choice selection and proper case
@@ -15,7 +14,6 @@ let p1Play = prompt('Name your weapon!') || "Rock";
 let p1Choice = p1Play.slice(0, 1).toUpperCase() + p1Play.slice(1).toLowerCase();
 return p1Choice;
 }
-let p1Choice = p1Selection();
 
 // CPU random choice selection
 function cpuSelection() {
@@ -23,39 +21,66 @@ let cpuPlay = ['Rock', 'Paper', 'Scissors'];
 let cpuChoice = cpuPlay[Math.floor(Math.random() * cpuPlay.length)];
 return cpuChoice;
 }
-let cpuChoice = cpuSelection();
 
-// Logic for 1 round - draw, win, loss - alert and add 1 to score
+
+// Logic for 1 round - draw, win, loss - alert and return result
 function playRound(p1Choice, cpuChoice) {
-
-
 if (p1Choice === cpuChoice) {
     alert("Ahhh... Great Minds Think Alike");
+    return 0;
 }
 else if ((p1Choice.includes('ock') && cpuChoice.includes('ors')) ||
         (p1Choice.includes('ors') && cpuChoice.includes('per')) ||
         (p1Choice.includes('per') && cpuChoice.includes('ock'))) {
             alert("You Chose... Wisely!");
-            return p1Score++;
+            return 1;
 }
 else {
     alert("You Chose... Poorly");
-    return cpuScore++;
+    return 2;
 }
 }
 
-
-console.log(p1Choice, 'vs',cpuChoice);
-
-playRound(p1Choice, cpuChoice);
-
-console.log('You: ' + p1Score, 'CPU: ' + cpuScore)
-
-function game(p1Score, cpuScore) {
-
-
-
+function updateScore(result){
+    if(result === 1) {
+      return p1Score++;
+    }
+    if(result === 2) {
+      return cpuScore++;
+    }
+    if(result === 0) {
+      cpuScore += 0;
+      p1Score += 0;
+    }
 }
+
+
+
+function game(numOfRounds) {
+do {
+let p1Choice = p1Selection();
+let cpuChoice = cpuSelection();
+let result = playRound(p1Choice, cpuChoice);
+updateScore(result);
+
+if (result !== 0) {
+    numOfRounds--;
+}
+} while (numOfRounds > 0);
+
+if (p1Score > cpuScore) {
+    alert("Victory is yours!");
+}
+else {
+    alert("You have been defeated.")
+}
+}
+
+game(5);
+
+
+console.log('You: ' + p1Score, 'CPU: ' + cpuScore);
+
 
 </script>
 </body>
