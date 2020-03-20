@@ -3,6 +3,17 @@
 <head>
 </head>
 <body>
+
+  <div>
+    <button id="btn">Rock</button>
+  </div>
+  <div>
+    <button id="btn">Paper</button>
+  </div>
+  <div>
+    <button id="btn">Scissors</button>
+  </div>
+
 <script>
 
 let p1Score = 0; 
@@ -21,7 +32,6 @@ let cpuPlay = ['Rock', 'Paper', 'Scissors'];
 let cpuChoice = cpuPlay[Math.floor(Math.random() * cpuPlay.length)];
 return cpuChoice;
 }
-
 
 // Logic for 1 round - draw, win, loss - alert and return result
 function playRound(p1Choice, cpuChoice) {
@@ -54,8 +64,6 @@ function updateScore(result){
     }
 }
 
-
-
 function game(numOfRounds) {
 do {
 let p1Choice = p1Selection();
@@ -75,9 +83,7 @@ else {
     alert("You have been defeated.")
 }
 }
-
-game(5);
-
+game(1);
 
 console.log('You: ' + p1Score, 'CPU: ' + cpuScore);
 
